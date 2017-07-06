@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BookView" customModule="ZentityTask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="wfA-o3-Ou2">
+                    <rect key="frame" x="54.5" y="55" width="47" height="44"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hAK-ia-jxg">
+                    <rect key="frame" x="54.5" y="55" width="41" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="hAK-ia-jxg" secondAttribute="height" multiplier="1:1" constant="1" id="CPI-YL-KMJ"/>
+                        <constraint firstAttribute="height" constant="40" id="rOk-MZ-JiK"/>
+                    </constraints>
+                </imageView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Fvz-JI-cnc">
+                    <rect key="frame" x="65" y="65" width="20" height="20"/>
+                </activityIndicatorView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book_new" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-xb-NSf">
+                    <rect key="frame" x="54.5" y="55" width="41" height="40"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="wfA-o3-Ou2" firstAttribute="leading" secondItem="hAK-ia-jxg" secondAttribute="leading" id="1lm-nv-eW5"/>
+                <constraint firstItem="8wm-xb-NSf" firstAttribute="top" secondItem="hAK-ia-jxg" secondAttribute="top" id="4zA-YK-61Q"/>
+                <constraint firstItem="8wm-xb-NSf" firstAttribute="trailing" secondItem="hAK-ia-jxg" secondAttribute="trailing" id="6Ai-mE-yiX"/>
+                <constraint firstItem="Fvz-JI-cnc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="InY-f0-jCG"/>
+                <constraint firstItem="wfA-o3-Ou2" firstAttribute="top" secondItem="hAK-ia-jxg" secondAttribute="top" id="KaX-u0-LZC"/>
+                <constraint firstItem="Fvz-JI-cnc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="RHH-sd-xn7"/>
+                <constraint firstItem="wfA-o3-Ou2" firstAttribute="trailing" secondItem="hAK-ia-jxg" secondAttribute="trailing" constant="6" id="ZTx-yf-XLI"/>
+                <constraint firstItem="wfA-o3-Ou2" firstAttribute="bottom" secondItem="hAK-ia-jxg" secondAttribute="bottom" constant="4" id="b8i-24-2iq"/>
+                <constraint firstItem="hAK-ia-jxg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rSM-lx-TsU"/>
+                <constraint firstItem="8wm-xb-NSf" firstAttribute="bottom" secondItem="hAK-ia-jxg" secondAttribute="bottom" id="t3m-9g-Fxr"/>
+                <constraint firstItem="hAK-ia-jxg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="yRF-gN-4pR"/>
+                <constraint firstItem="8wm-xb-NSf" firstAttribute="leading" secondItem="hAK-ia-jxg" secondAttribute="leading" id="zlY-Cp-FHh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="activityIndicator" destination="Fvz-JI-cnc" id="c4j-iU-Eja"/>
+                <outlet property="bookImageView" destination="hAK-ia-jxg" id="x59-Mh-GvT"/>
+                <outlet property="newImageView" destination="8wm-xb-NSf" id="jdH-ZW-pqU"/>
+                <outlet property="shadowImageView" destination="wfA-o3-Ou2" id="pqe-j6-XN5"/>
+            </connections>
+            <point key="canvasLocation" x="26.5" y="51.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="book_new" width="47" height="43"/>
+        <image name="book_shadow" width="83" height="112"/>
+    </resources>
+</document>
