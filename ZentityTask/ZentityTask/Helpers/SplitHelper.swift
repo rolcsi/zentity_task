@@ -11,13 +11,21 @@ import UIKit
 class SplitHelper: NSObject {
 
     static func splitBooks(from array: [Book]) -> [[Book]] {
-        
-        let splitCount = UIDevice.current.orientation.isPortrait ? 2 : 3
+
+        var splitCount = 2
+        if UIDevice.current.orientation == .unknown {
+            
+            splitCount = UIApplication.shared.statusBarOrientation.isPortrait ? 2 : 3
+        } else {
+            
+            splitCount = UIDevice.current.orientation.isPortrait ? 2 : 3
+        }
         
         var splitedArray: [[Book]] = []
         var tmpArray: [Book] = []
         
         for book in array {
+            
             if tmpArray.count < splitCount {
                 tmpArray.append(book)
             } else {

@@ -15,5 +15,4 @@ class BookView: UIView {
     @IBOutlet weak var shadowImageView: UIImageView!
     @IBOutlet weak var newImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-
 }

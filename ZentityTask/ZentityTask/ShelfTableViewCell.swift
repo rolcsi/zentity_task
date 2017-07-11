@@ -9,11 +9,6 @@
 import UIKit
 
 class ShelfTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
     
     func addBooks(books: [Book]) {
         
@@ -43,11 +38,10 @@ class ShelfTableViewCell: UITableViewCell {
             bookView.frame.size.width = width
             
             guard let indexOfBook = books.index(where: { (arrayBook) -> Bool in
+                
                 return arrayBook == book
-            }) else {
-                debugPrint("Index of book not found")
-                return
-            }
+            }) else { return }
+            
             let bookPosition = CGFloat(books.distance(from: books.startIndex, to: indexOfBook))
             bookView.frame.origin.x = bookPosition * width
             

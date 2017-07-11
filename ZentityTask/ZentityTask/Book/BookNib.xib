@@ -53,9 +53,9 @@
                 <constraint firstItem="03x-IL-Whr" firstAttribute="bottom" secondItem="hAK-ia-jxg" secondAttribute="top" constant="-5" id="bQe-HD-wM1"/>
                 <constraint firstItem="03x-IL-Whr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="dNn-hW-b56"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hAK-ia-jxg" secondAttribute="trailing" constant="10" id="ho9-lT-tbL"/>
-                <constraint firstItem="hAK-ia-jxg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rSM-lx-TsU"/>
+                <constraint firstItem="hAK-ia-jxg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" priority="999" id="rSM-lx-TsU"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hAK-ia-jxg" secondAttribute="bottom" constant="10" id="ri8-cH-7Wi"/>
-                <constraint firstItem="hAK-ia-jxg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="yRF-gN-4pR"/>
+                <constraint firstItem="hAK-ia-jxg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" priority="999" id="yRF-gN-4pR"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

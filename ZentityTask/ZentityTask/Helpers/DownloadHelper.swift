@@ -10,19 +10,18 @@ import UIKit
 
 class DownloadHelper: NSObject, XMLParserDelegate {
 
-    let url = URL(string: "http://www.lukaspetrik.cz/filemanager/tmp/reader/data.xml")!
+    static let url = URL(string: "http://www.lukaspetrik.cz/filemanager/tmp/reader/data.xml")
  
     var parser = XMLParser()
     var arrStack = Array<AnyObject>()
     var elements = NSMutableDictionary()
     var textInProgress = ""
     
-    
-    // MARK: DownloadImage
+    // MARK: DownloadImage methods
     
     static func downloadImage(from urlString: String, completion: @escaping (UIImage) -> ()) {
         
-        let optionalUrl = URL(string: urlString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))
+        let optionalUrl = URL(string: urlString)
         
         guard let url = optionalUrl else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -47,18 +46,6 @@ class DownloadHelper: NSObject, XMLParserDelegate {
     
     // MARK: XML to Book binding methods
     
-    public func parseXMLToArray() -> Array<AnyObject> {
-        
-        self.arrStack.append(self.elements)
-        
-        guard let parser = XMLParser(contentsOf: url) else { return [] }
-        self.parser = parser
-        self.parser.delegate = self
-        self.parser.parse()
-        
-        return arrStack
-    }
-    
     public func arrayToObjects() -> [Book] {
         
         let xmlArray = self.parseXMLToArray()
@@ -70,22 +57,32 @@ class DownloadHelper: NSObject, XMLParserDelegate {
         
         if let books = books as? Array<AnyObject> {
             
-            // array of books in dictionary
+            // Array of books in dictionary
             for book in books {
                 
                 guard let bookObj = self.bindBook(book: book) else { continue }
-                
                 array.append(bookObj)
             }
         } else {
             
-            // only one book in dictionary
+            // Only one book in dictionary
             guard let bookObj = self.bindBook(book: books) else { return array }
-            
             array.append(bookObj)
         }
         
         return array
+    }
+    
+    private func parseXMLToArray() -> Array<AnyObject> {
+        
+        self.arrStack.append(self.elements)
+        
+        guard let url = DownloadHelper.url, let parser = XMLParser(contentsOf: url) else { return [] }
+        self.parser = parser
+        self.parser.delegate = self
+        self.parser.parse()
+        
+        return arrStack
     }
     
     private func bindBook(book: Any?) -> Book? {
@@ -118,82 +115,67 @@ class DownloadHelper: NSObject, XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         
-        //Create dictionary for currnt Level
+        // Create dictionary for current Level
         let parentDict = arrStack.last
         
-        //Create Child dict and Add attributes dict in to that
-        
+        // Create child dict and add attributes dict in to that
         let childDict = NSMutableDictionary()
         childDict.addEntries(from: attributeDict)
         
-        //check any item for same Node Exist?
-        //if there than we need to create array for same
-//        let existingValue = parentDict![elementName]
-        
-        if let existingValue = parentDict?.object(forKey: elementName)
-        {
+        // Check any item for same node exist
+        // If there than we need to create array for same
+        if let existingValue = parentDict?.object(forKey: elementName) {
             var array:[AnyObject] = []
             
-            if existingValue is Array<AnyObject>
-            {
-                //use alreaddy created array
-                array = existingValue as! [AnyObject]
+            if existingValue is Array<AnyObject> {
+                
+                // Use already created array
+                guard let existingValue = existingValue as? [AnyObject] else { return }
+                
+                array = existingValue
                 array.append(childDict)
                 parentDict?.setValue(array, forKey: elementName)
-            }
-            else
-            {
-                //replace child dict to array of alreaddy created item so managing array
-                //array.addObject(existingValue!)   // Harshit
+            } else {
+                
+                // Replace child dict to array
                 array.append(existingValue as AnyObject)
                 array.append(childDict)
-                //parentDict!.setValue(array, forKey: elementName)  // Harshit
                 
                 parentDict?.setValue(array, forKey: elementName)
                 
             }
+        } else {
             
-            //array.addObject(childDict) // Harshit
-//            array.append(childDict)
-//            print("parent: \(parentDict)")
-        }
-        else
-        {
-            //No current value update dictionary
-            //parentDict.setValue(childDict, forKey: elementName) // Harshit
+            // No current value update dictionary
             parentDict?.setValue(childDict, forKey: elementName)
         }
-        //update stack
-        //        arrStack.addObject(childDict) // Harshit
+        
+        // Update stack
         arrStack.append(childDict)
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
-        //update parent dict with text info i.e /n
+        // Update parent dict with value
         let dictInProgress = arrStack.last
-        // Set the text property can remove this but apple recommending this
         
         if self.textInProgress.lengthOfBytes(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue)) > 0 {
             
-            //            dictInProgress.setValue(textInProgress, forKey: "text")
             dictInProgress?.setValue(textInProgress, forKey: "value")
-            //textInProgress = NSMutableString()    // Harshit
             textInProgress = ""
         }
-        //Remove current node
-        //arrStack.removeLastObject()   // Harshit
+        
+        // Remove current node
         arrStack.removeLast()
     }
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         
-        //        textInProgress.appendString(string)   // Harshit
-        textInProgress = textInProgress + string.trimmingCharacters(in: CharacterSet.newlines)
+        textInProgress = textInProgress + string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
     
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
         
-        print("Parser failure error: ", parseError)
+        debugPrint("Parser failure error: ", parseError)
     }
 }

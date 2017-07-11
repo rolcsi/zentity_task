@@ -7,7 +7,9 @@
 //
 
 extension String {
+    
     func toBool() -> Bool {
+    
         switch self {
         case "True", "true", "yes", "1", "TRUE":
             return true

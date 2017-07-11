@@ -22,6 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override var prefersStatusBarHidden: Bool {
+        
         return true
     }
     
@@ -37,9 +38,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     private func loadAndSplitBooks() {
         
         let downloadHelper = DownloadHelper.init()
-        
-        
-        
         self.allBooks = downloadHelper.arrayToObjects()
         self.splitBooks()
     }
