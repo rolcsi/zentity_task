@@ -8,10 +8,14 @@
 
 import UIKit
 
-class SplitHelper: NSObject {
+protocol SplitHelper {
+    func splitBooks(from array: [Book]) -> [[Book]]
+}
 
-    static func splitBooks(from array: [Book]) -> [[Book]] {
-
+extension SplitHelper {
+    
+    func splitBooks(from array: [Book]) -> [[Book]] {
+        
         var splitCount = 2
         if UIDevice.current.orientation == .unknown {
             

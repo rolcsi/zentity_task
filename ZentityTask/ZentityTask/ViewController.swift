@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class ViewController: UIViewController, SplitHelper {
+    
     @IBOutlet weak var tableView: UITableView!
     
-    private var allBooks: [Book] = []
-    private var splitedBooks: [[Book]] = []
+    fileprivate var allBooks: [Book] = []
+    fileprivate var splitedBooks: [[Book]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,21 +35,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: - Private methods
     
-    private func loadAndSplitBooks() {
+    fileprivate func loadAndSplitBooks() {
         
         let downloadHelper = DownloadHelper.init()
         self.allBooks = downloadHelper.arrayToObjects()
         self.splitBooks()
     }
     
-    private func splitBooks() {
+    fileprivate func splitBooks() {
         
-        let splitedBooks = SplitHelper.splitBooks(from: self.allBooks)
+        let splitedBooks = splitBooks(from: self.allBooks)
         self.splitedBooks = splitedBooks
     }
-    
-    // MARK: - TableViewDelegate methods
+}
 
+extension ViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.splitedBooks.count
@@ -67,7 +68,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if indexPath.row < self.splitedBooks.count {
             cell.addBooks(books: self.splitedBooks[indexPath.row])
         }
-    
+        
         return cell
     }
 }
