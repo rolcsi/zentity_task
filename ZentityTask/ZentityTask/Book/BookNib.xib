@@ -16,35 +16,46 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="wfA-o3-Ou2">
-                    <rect key="frame" x="54.5" y="55" width="47" height="44"/>
+                    <rect key="frame" x="34" y="16" width="94" height="125"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hAK-ia-jxg">
-                    <rect key="frame" x="54.5" y="55" width="41" height="40"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hAK-ia-jxg">
+                    <rect key="frame" x="33.5" y="20" width="83" height="110"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="hAK-ia-jxg" secondAttribute="height" multiplier="1:1" constant="1" id="CPI-YL-KMJ"/>
-                        <constraint firstAttribute="height" constant="40" id="rOk-MZ-JiK"/>
+                        <constraint firstAttribute="width" secondItem="hAK-ia-jxg" secondAttribute="height" multiplier="83:112" constant="1" id="CPI-YL-KMJ"/>
                     </constraints>
                 </imageView>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Fvz-JI-cnc">
                     <rect key="frame" x="65" y="65" width="20" height="20"/>
                 </activityIndicatorView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book_new" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-xb-NSf">
-                    <rect key="frame" x="54.5" y="55" width="41" height="40"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book_new" translatesAutoresizingMaskIntoConstraints="NO" id="8wm-xb-NSf">
+                    <rect key="frame" x="69.5" y="20" width="47" height="43"/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03x-IL-Whr">
+                    <rect key="frame" x="10" y="5" width="130" height="10"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <constraints>
+                <constraint firstItem="hAK-ia-jxg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="0qi-kd-59z"/>
                 <constraint firstItem="wfA-o3-Ou2" firstAttribute="leading" secondItem="hAK-ia-jxg" secondAttribute="leading" id="1lm-nv-eW5"/>
                 <constraint firstItem="8wm-xb-NSf" firstAttribute="top" secondItem="hAK-ia-jxg" secondAttribute="top" id="4zA-YK-61Q"/>
                 <constraint firstItem="8wm-xb-NSf" firstAttribute="trailing" secondItem="hAK-ia-jxg" secondAttribute="trailing" id="6Ai-mE-yiX"/>
+                <constraint firstAttribute="trailing" secondItem="03x-IL-Whr" secondAttribute="trailing" constant="10" id="9v9-F0-frq"/>
+                <constraint firstItem="03x-IL-Whr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="GKS-Cm-myW"/>
                 <constraint firstItem="Fvz-JI-cnc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="InY-f0-jCG"/>
-                <constraint firstItem="wfA-o3-Ou2" firstAttribute="top" secondItem="hAK-ia-jxg" secondAttribute="top" id="KaX-u0-LZC"/>
+                <constraint firstItem="wfA-o3-Ou2" firstAttribute="top" secondItem="hAK-ia-jxg" secondAttribute="top" constant="-4" id="KaX-u0-LZC"/>
+                <constraint firstItem="hAK-ia-jxg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="Lja-jI-aWb"/>
                 <constraint firstItem="Fvz-JI-cnc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="RHH-sd-xn7"/>
-                <constraint firstItem="wfA-o3-Ou2" firstAttribute="trailing" secondItem="hAK-ia-jxg" secondAttribute="trailing" constant="6" id="ZTx-yf-XLI"/>
-                <constraint firstItem="wfA-o3-Ou2" firstAttribute="bottom" secondItem="hAK-ia-jxg" secondAttribute="bottom" constant="4" id="b8i-24-2iq"/>
+                <constraint firstItem="wfA-o3-Ou2" firstAttribute="trailing" secondItem="hAK-ia-jxg" secondAttribute="trailing" constant="11" id="ZTx-yf-XLI"/>
+                <constraint firstItem="wfA-o3-Ou2" firstAttribute="bottom" secondItem="hAK-ia-jxg" secondAttribute="bottom" constant="11" id="b8i-24-2iq"/>
+                <constraint firstItem="03x-IL-Whr" firstAttribute="bottom" secondItem="hAK-ia-jxg" secondAttribute="top" constant="-5" id="bQe-HD-wM1"/>
+                <constraint firstItem="03x-IL-Whr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="dNn-hW-b56"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hAK-ia-jxg" secondAttribute="trailing" constant="10" id="ho9-lT-tbL"/>
                 <constraint firstItem="hAK-ia-jxg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rSM-lx-TsU"/>
-                <constraint firstItem="8wm-xb-NSf" firstAttribute="bottom" secondItem="hAK-ia-jxg" secondAttribute="bottom" id="t3m-9g-Fxr"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hAK-ia-jxg" secondAttribute="bottom" constant="10" id="ri8-cH-7Wi"/>
                 <constraint firstItem="hAK-ia-jxg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="yRF-gN-4pR"/>
-                <constraint firstItem="8wm-xb-NSf" firstAttribute="leading" secondItem="hAK-ia-jxg" secondAttribute="leading" id="zlY-Cp-FHh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -52,8 +63,9 @@
                 <outlet property="bookImageView" destination="hAK-ia-jxg" id="x59-Mh-GvT"/>
                 <outlet property="newImageView" destination="8wm-xb-NSf" id="jdH-ZW-pqU"/>
                 <outlet property="shadowImageView" destination="wfA-o3-Ou2" id="pqe-j6-XN5"/>
+                <outlet property="titleLabel" destination="03x-IL-Whr" id="OLB-xn-3SW"/>
             </connections>
-            <point key="canvasLocation" x="26.5" y="51.5"/>
+            <point key="canvasLocation" x="26" y="51"/>
         </view>
     </objects>
     <resources>

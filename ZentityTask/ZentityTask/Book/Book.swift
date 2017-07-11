@@ -19,8 +19,11 @@ protocol BaseBook {
 
 extension Book: Equatable {
     static func ==(lhs: Book, rhs: Book) -> Bool {
-        let booksEqual = lhs.title == rhs.title &&
-            lhs.thumbnail == rhs.thumbnail
+        let booksEqual = lhs.id == rhs.id &&
+            lhs.title == rhs.title &&
+            lhs.thumbnail == rhs.thumbnail &&
+            lhs.new == rhs.new &&
+            lhs.thumbExt == rhs.thumbExt
         return booksEqual
     }
 }

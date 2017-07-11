@@ -10,6 +10,9 @@
 		C01B788C1F0ECE2A00C45440 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01B78891F0ECE2A00C45440 /* Book.swift */; };
 		C01B788D1F0ECE2A00C45440 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01B788A1F0ECE2A00C45440 /* BookView.swift */; };
 		C01B788E1F0ECE2A00C45440 /* BookNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = C01B788B1F0ECE2A00C45440 /* BookNib.xib */; };
+		C01B78961F0ED52600C45440 /* DownloadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01B78941F0ED52600C45440 /* DownloadHelper.swift */; };
+		C01B78971F0ED52600C45440 /* SplitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01B78951F0ED52600C45440 /* SplitHelper.swift */; };
+		C01B78991F14BD3100C45440 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01B78981F14BD3100C45440 /* Extensions.swift */; };
 		C0F791FD1EF9C64F00DEE24C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F791FC1EF9C64F00DEE24C /* AppDelegate.swift */; };
 		C0F791FF1EF9C64F00DEE24C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F791FE1EF9C64F00DEE24C /* ViewController.swift */; };
 		C0F792021EF9C64F00DEE24C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0F792001EF9C64F00DEE24C /* Main.storyboard */; };
@@ -23,6 +26,9 @@
 		C01B78891F0ECE2A00C45440 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		C01B788A1F0ECE2A00C45440 /* BookView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		C01B788B1F0ECE2A00C45440 /* BookNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookNib.xib; sourceTree = "<group>"; };
+		C01B78941F0ED52600C45440 /* DownloadHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadHelper.swift; sourceTree = "<group>"; };
+		C01B78951F0ED52600C45440 /* SplitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitHelper.swift; sourceTree = "<group>"; };
+		C01B78981F14BD3100C45440 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C0F791F91EF9C64F00DEE24C /* ZentityTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZentityTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F791FC1EF9C64F00DEE24C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0F791FE1EF9C64F00DEE24C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +61,15 @@
 			path = Book;
 			sourceTree = "<group>";
 		};
+		C01B78931F0ED52600C45440 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C01B78941F0ED52600C45440 /* DownloadHelper.swift */,
+				C01B78951F0ED52600C45440 /* SplitHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		C0F791F01EF9C64F00DEE24C = {
 			isa = PBXGroup;
 			children = (
@@ -74,10 +89,12 @@
 		C0F791FB1EF9C64F00DEE24C /* ZentityTask */ = {
 			isa = PBXGroup;
 			children = (
+				C01B78931F0ED52600C45440 /* Helpers */,
 				C01B78881F0ECE2A00C45440 /* Book */,
 				C0F791FC1EF9C64F00DEE24C /* AppDelegate.swift */,
 				C0F791FE1EF9C64F00DEE24C /* ViewController.swift */,
 				C0F792111EF9CC8400DEE24C /* ShelfTableViewCell.swift */,
+				C01B78981F14BD3100C45440 /* Extensions.swift */,
 				C0F792001EF9C64F00DEE24C /* Main.storyboard */,
 				C0F792061EF9C64F00DEE24C /* Assets.xcassets */,
 				C0F792081EF9C64F00DEE24C /* LaunchScreen.storyboard */,
@@ -161,12 +178,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C01B78971F0ED52600C45440 /* SplitHelper.swift in Sources */,
+				C01B78991F14BD3100C45440 /* Extensions.swift in Sources */,
 				C0F792121EF9CC8400DEE24C /* ShelfTableViewCell.swift in Sources */,
 				C0F791FF1EF9C64F00DEE24C /* ViewController.swift in Sources */,
 				C0F792051EF9C64F00DEE24C /* ZentityTask.xcdatamodeld in Sources */,
 				C01B788D1F0ECE2A00C45440 /* BookView.swift in Sources */,
 				C01B788C1F0ECE2A00C45440 /* Book.swift in Sources */,
 				C0F791FD1EF9C64F00DEE24C /* AppDelegate.swift in Sources */,
+				C01B78961F0ED52600C45440 /* DownloadHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +316,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-roland-.ZentityTask";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -310,6 +331,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-roland-.ZentityTask";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

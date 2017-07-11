@@ -10,18 +10,51 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    private var allBooks: [Book] = []
+    private var splitedBooks: [[Book]] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.loadAndSplitBooks()
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        splitBooks()
+        self.tableView.reloadData()
+    }
+    
+    // MARK: - Private methods
+    
+    private func loadAndSplitBooks() {
+        
+        let downloadHelper = DownloadHelper.init()
+        
+        
+        
+        self.allBooks = downloadHelper.arrayToObjects()
+        self.splitBooks()
+    }
+    
+    private func splitBooks() {
+        
+        let splitedBooks = SplitHelper.splitBooks(from: self.allBooks)
+        self.splitedBooks = splitedBooks
+    }
+    
+    // MARK: - TableViewDelegate methods
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 1
+        return self.splitedBooks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -31,19 +64,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             fatalError("Cell \(ShelfTableViewCell.self) was not dequed")
         }
         
-        let book = Book(
-            id: "",
-            title: "",
-            thumbnail: "http://geo-assets.tedcdn.com/pico_iyer/TEDBook_Iyer_250x215.jpg",
-            new: true,
-            thumbExt: "")
+        cell.removeBookViews()
         
-        cell.addBooks(books: [book, book])
-
-
+        if indexPath.row < self.splitedBooks.count {
+            cell.addBooks(books: self.splitedBooks[indexPath.row])
+        }
     
         return cell
     }
-
 }
 

@@ -17,12 +17,10 @@ class ShelfTableViewCell: UITableViewCell {
     
     func addBooks(books: [Book]) {
         
-        guard books.count > 0 else { return }
+        let count = books.count
+        guard count > 0 else { return }
         
         let key = "BookNib"
-        let count = UIDevice.current.orientation.isPortrait ? 2 : 3
-        
-        var bookCount = CGFloat(0)
         
         for book in books {
             
@@ -32,36 +30,38 @@ class ShelfTableViewCell: UITableViewCell {
                     fatalError("\(key) xib was not loaded")
             }
             
-            let optionalUrl = URL(string: book.thumbnail)
-            guard let url = optionalUrl else { return }
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
+            DownloadHelper.downloadImage(from: book.thumbnail, completion: { (image) in
                 
-                guard let data = data, error == nil else { return }
-                
-                DispatchQueue.main.async() { () -> Void in
-               
-                    bookView.bookImageView.image = UIImage(data: data)
-                    bookView.activityIndicator.isHidden = true
-                }
-            }.resume()
+                bookView.bookImageView.image = image
+                bookView.activityIndicator.isHidden = true
+                bookView.newImageView.isHidden = !book.new
+            })
+            
+            bookView.titleLabel.text = book.title
             
             let width = self.frame.size.width / CGFloat(count)
             bookView.frame.size.width = width
-            bookView.frame.origin.x = bookCount * width
-            bookCount += 1
             
-//            let indexOfBook = books.index(where: { (arrayBook) -> Bool in
-//                return arrayBook == book
-//            })
-//            
-//            
-//            
-//            bookView.frame.origin.x = books.distance(from: books.startIndex, to: indexOfBook)
+            guard let indexOfBook = books.index(where: { (arrayBook) -> Bool in
+                return arrayBook == book
+            }) else {
+                debugPrint("Index of book not found")
+                return
+            }
+            let bookPosition = CGFloat(books.distance(from: books.startIndex, to: indexOfBook))
+            bookView.frame.origin.x = bookPosition * width
             
-            print("bookView frame: \(bookView.frame)")
             self.addSubview(bookView)
         }
+    }
+    
+    func removeBookViews() {
         
+        for subview in self.subviews {
+            if let view = subview as? BookView {
+                view.removeFromSuperview()
+            }
+        }
     }
 
 }

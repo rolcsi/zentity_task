@@ -10,6 +10,7 @@ import UIKit
 
 class BookView: UIView {
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var shadowImageView: UIImageView!
     @IBOutlet weak var newImageView: UIImageView!
